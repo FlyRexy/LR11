@@ -1,2 +1,18 @@
-<h1>Segment#result</h1>
-<p>Find me in app/views/segment/result.html.erb</p>
+<h2 id = "result">Самый длинный отрезок: <%= @result_arr[@max_i] %></h2>
+<h2>Количество отрезков: <%= @result_arr.compact.length %></h2>
+<h1>Все отрезки:</h1>
+<table class = "table table-dark" style = "width: 50%">
+  <tr>
+    <td style = "width: 50px">№ отрезка</td>
+    <td style = "width: 80%">Отрезок</td>
+  </tr>
+  <% i = 0 %>
+  <% while i < @result_arr.compact.length do %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= @result_arr.compact[i] %></td>
+    </tr>
+    <% i += 1 %>
+  <% end %>
+</table>
+<p>Previous largest segment was <%= link_to "#{@previous.largest_segment}", root_path, class: "my_link" %></p>
