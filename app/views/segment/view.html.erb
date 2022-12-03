@@ -1,0 +1,10 @@
+<% k = 1 %>
+<% @rows.each do |hash| %>
+  <% s = Segment.new %>
+ <div id = "elem"><%=k%> Элемент <%= s.from_xml(hash) %></div>
+  <div id='pad'>
+    <div>Количество элементов в последовательности: <%= s.from_xml(hash).count %></div>
+    <div>Исходная последовательность: <%= s.from_xml(hash).sequence %></div>
+    <div>Самый длинный отрезок: <%= s.from_xml(hash).largest_segment %></div>
+  <% k += 1 %></div>
+<% end %>

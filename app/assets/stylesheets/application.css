@@ -88,3 +88,10 @@ p {
 .my_link:hover {
     color: #ffb3a4;
 }
+#pad {
+    padding-left: 35px
+}
+#elem {
+    color: rebeccapurple;
+    font-weight: bolder;
+}
