@@ -22,8 +22,8 @@ RSpec.describe SegmentController, type: :controller do
   end
 
   describe 'page result' do
+    before { get :result, params: {arr: '1 2 3 4 5', num: '5'} }
     it 'has a 200 status code' do
-      get :result
       expect(response.status).to eq(200)
     end
   end
@@ -36,14 +36,17 @@ RSpec.describe SegmentController, type: :controller do
   end
 end
 
-RSpec.describe SegmentController, type: :request do
+RSpec.describe Segment, type: :model do
   context 'notice message test' do
+    let(:seq) { '1 2 3 4' }
+    subject { described_class.new(sequence: seq, count: '5') }
     it 'return notice message' do
-      get '/segment/result?num=4&arr=1 2 3 4 5'
-      expect(flash[:alert]).to eq('Заданное количество элементов не совпадает с реальным')
+      expect(subject.errors[:number].first).to eq "of elements in array are not matching with first field"
     end
   end
+end
 
+RSpec.describe SegmentController, type: :request do
   context 'adding to database' do
     it 'added to db' do
       expect(Segment.where(sequence: '1 81 3 4').count).to eq(0)

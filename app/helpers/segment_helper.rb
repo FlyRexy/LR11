@@ -1,6 +1,7 @@
 module SegmentHelper
   def self.get_previous
     temp = Segment.order(:created_at).last(2).first
+    p temp
     if Segment.count == 1
       temp.largest_segment = 'NULL'
     end
